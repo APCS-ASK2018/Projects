@@ -78,49 +78,14 @@ public class RomanNumeral
     public static String toRoman(int dec) {
         if(dec > 3999 || dec <= 0)
             throw new RuntimeException("Number outside supported range!");
-        String output = "";
-        while(dec > 0) {
-            if(dec >= 1000) {
-                output += "M";
-                dec -= 1000;
-            } else if(dec >= 900) {
-                output += "CM";
-                dec -= 900;
-            } else if(dec >= 500) {
-                output += "D";
-                dec -= 500;
-            } else if(dec >= 400) {
-                output += "CD";
-                dec -= 400;
-            } else if(dec >= 100) {
-                output += "C";
-                dec -= 100;
-            } else if(dec >= 90) {
-                output += "XC";
-                dec -= 90;
-            } else if(dec >= 50) {
-                output += "L";
-                dec -= 50;
-            } else if(dec >= 40) {
-                output += "XL";
-                dec -= 40;
-            } else if(dec >= 10) {
-                output += "X";
-                dec -= 10;
-            } else if(dec >= 9) {
-                output += "IX";
-                dec -= 9;
-            } else if(dec >= 5) {
-                output += "V";
-                dec -= 5;
-            } else if(dec >= 4) {
-                output += "IV";
-                dec -= 4;
-            } else if(dec >= 1) {
-                output += "I";
-                dec -= 1;
+        final int[] DECIMAL = {1,4,5,9,10,40,50,90,100,400,500,900,1000};
+        final String[] ROMAN = {"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"};
+        StringBuilder output = new StringBuilder();
+        for(int i = ROMAN.length - 1; i >= 0; i--)
+            while(dec >= DECIMAL[i]) {
+                output.append(ROMAN[i]);
+                dec -= DECIMAL[i];
             }
-        }
-        return output;
+        return output.toString();
     }
 }
