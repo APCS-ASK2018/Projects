@@ -1,7 +1,7 @@
 
 public class Apartment implements Comparable<Apartment>
 {
-    private String owner; // Resident type: single, couple, family
+    private String owner; // Resident type: single, couple, family, roommates
     private int occupancy; // Number of residents
 
     /**
@@ -66,10 +66,11 @@ public class Apartment implements Comparable<Apartment>
     /**
      * Compare with another apartment object
      * @param other Another apartment object
+     * @returns this.occupancy - other.occupancy
      * @throws NullPointerException if other is null (java specification)
      * 
      * PreCondition: other is not null
-     * PostCondition: this.occupancy - other.occupancy or null exception
+     * PostCondition: correct return value or null exception
      */
     @Override
     public int compareTo(Apartment other) {

@@ -22,15 +22,26 @@ public class ApartmentTester
         
         System.out.println("Recounting total occupants...");
         System.out.println("Total occupants: " + totalOccupancy(building));
+        System.out.println();
+        
+        System.out.println("Comparing apartments...");
+        Apartment apt1 = new Apartment();
+        Apartment apt2 = new Apartment();
+        System.out.println("apt1 : " + apt1 + "\tapt2 : " + apt2);
+        int compared = apt1.compareTo(apt2);
+        if(compared == 0) System.out.println("Both aptartments are equal");
+        else if(compared < 0) System.out.println("Apt2 is bigger");
+        else System.out.println("Apt1 is bigger");
     }
     
     /**
      * Return sum of all occupancy in apt
      * @param apt = 2D array of apartment
+     * @return sums the total occupants
      * 
      * PreCondition: apt is non-null, occupancy are always non-negative,
      *               sum does not cause int overflow
-     * PostCondition: return int value that sums the total occupants
+     * PostCondition: return sums the total occupants
      */
     private static int totalOccupancy(Apartment[][] apt) {
         /* 1 statement solution outside AP subset (java.util.stream.*)
@@ -70,7 +81,7 @@ public class ApartmentTester
                         apt[lastPos[0]][lastPos[1]] = null;
                         apt[i][j].setOwner("roommates");
                         lastPos[0] = -1;
-                    };
+                    }
     }
     
     /**
