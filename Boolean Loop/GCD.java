@@ -18,5 +18,8 @@ public class GCD
             return num2;
         
         return getGCD(num2, modResult);
+        
+        // 1 line solution
+        // return (num1 < num2) ? getGCD(num2, num1) : (num2 == 0) ? num1 : getGCD(num2, num1 % num2);
     }
 }
